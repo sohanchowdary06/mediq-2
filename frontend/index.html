@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MEDIQ — Clinical Evidence &amp; Triage Support System</title>
+<meta name="description" content="Educational decision support: finding, confidence, evidence, triage and validation.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="nav">
+  <a class="brand" href="#top">MEDIQ</a>
+  <nav>
+    <a href="#analyze">Analyze</a><a href="#demo">Examples</a><a href="#pipeline">Pipeline</a>
+    <a href="#validation">Validation</a><a href="#safety">Safety</a>
+  </nav>
+  <span class="pill">Educational use only</span>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div>
+      <h1>Clinical Evidence &amp; Triage Support System</h1>
+      <p class="lead">Medical-image decision support that knows when it doesn't know — calibrated confidence, visible evidence, quality checks and safe escalation.</p>
+      <a class="btn" href="#analyze">Upload an image</a>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <div class="lungs"><span></span><span></span><i class="glow"></i></div>
+    </div>
+  </section>
+
+  <section id="analyze">
+    <h2>Analyze your image</h2>
+    <p class="muted">Upload an image to get positive / negative, confidence, reasons and a triage recommendation.</p>
+    <div class="grid2">
+      <label class="drop" id="drop">
+        <input type="file" id="file" accept="image/*" hidden>
+        <strong>Upload a medical image</strong>
+        <span class="muted">X-ray, CT or MRI — public / de-identified only</span>
+        <span class="btn ghost">Choose image</span>
+        <img id="preview" alt="" hidden>
+      </label>
+      <div class="card" id="result"><p class="muted">Results appear here: positive / negative, confidence, reasons and triage.</p></div>
+    </div>
+  </section>
+
+  <section id="demo">
+    <h2>Interactive case walkthrough</h2>
+    <p class="muted">Four mandatory case types, shown with illustrative outputs.</p>
+    <div class="tabs" id="tabs"></div>
+    <div class="card" id="case"></div>
+  </section>
+
+  <section id="pipeline">
+    <h2>Pipeline</h2>
+    <ol class="steps">
+      <li><b>01</b><h3>Quality gate</h3><p>Blur, exposure, view &amp; OOD detection before any prediction.</p></li>
+      <li><b>02</b><h3>Pretrained model</h3><p>Fine-tuned public backbone (e.g. DenseNet / TorchXRayVision).</p></li>
+      <li><b>03</b><h3>Calibration</h3><p>Temperature scaling + MC-dropout / ensemble uncertainty.</p></li>
+      <li><b>04</b><h3>Explainability</h3><p>Grad-CAM localization + nearest reference cases.</p></li>
+      <li><b>05</b><h3>Triage rules</h3><p>Escalate · Routine · Defer · Reject with abstention thresholds.</p></li>
+    </ol>
+  </section>
+
+  <section id="validation">
+    <h2>Validation summary</h2>
+    <p class="muted">Illustrative held-out test-set results — replace with your own numbers.</p>
+    <div class="metrics" id="metrics"></div>
+  </section>
+
+  <section id="safety">
+    <h2>Safety &amp; scope</h2>
+    <p>For education and research only. Not a medical device. Does not diagnose or recommend treatment. Use only public, de-identified datasets. Every output requires review by a qualified professional.</p>
+  </section>
+</main>
+<footer>© MEDIQ · Educational prototype</footer>
+<script src="app.js"></script>
+</body>
+</html>
